@@ -32,7 +32,7 @@
     <main class="container">
         <div class="meta">
             <span><strong>Effective date:</strong> October 12, 2026</span>
-            <span><strong>Last updated:</strong> October 12, 2026</span>
+            <span><strong>Last updated:</strong> November 4, 2026</span>
         </div>
 
         <nav class="toc" aria-label="Contents">
@@ -78,17 +78,32 @@
             <h3>3. Transcription</h3>
             <ul>
                 <li><strong>Consent first:</strong> Before a recording is transcribed, Lexy explains the transfer and asks for your permission. Without it, recording still works and audio stays on your device</li>
-                <li><strong>How it works:</strong> The recording is uploaded to a private Firebase Storage location. Our server checks your account, the file type, size and length, and your monthly allowance, then sends the audio to OpenAI for speech-to-text. The transcript is returned to the app</li>
+                <li><strong>How it works:</strong> The recording is uploaded to a private Firebase Storage location. Our server checks your account, the file type, size and length, and your monthly allowance, then sends the audio to OpenAI for speech-to-text, together with the note title and any words you added under <strong>Custom vocabulary</strong> in Settings as spelling hints. The transcript is returned to the app</li>
                 <li><strong>Control:</strong> You can turn off <strong>Allow AI transcription</strong> in Settings at any time</li>
             </ul>
 
-            <h3>4. Usage and subscription information</h3>
+            <h3>4. Live text and speaker detection (on your device)</h3>
             <ul>
-                <li>How many transcription minutes you used this month, so monthly limits can be applied</li>
+                <li><strong>Live text:</strong> While you record, Lexy can show text as you speak using your device's built-in speech recognition (provided by Google on Android). Lexy asks it to use an installed on-device language pack and receives only the resulting text</li>
+                <li><strong>Speaker detection:</strong> Telling speakers apart runs entirely on your device. The voice model it needs is downloaded once from a public server, with your permission; no audio is sent when it is downloaded or used</li>
+            </ul>
+
+            <h3>5. AI outputs</h3>
+            <ul>
+                <li><strong>Consent first:</strong> Before Lexy creates an output from a note (for example a meeting summary or a follow-up email), it asks for your permission</li>
+                <li><strong>How it works:</strong> The note's text and spoken language are sent through our server to OpenAI, which creates the result. OpenAI is asked not to store the request</li>
+                <li><strong>On our server:</strong> The result and a one-way hash of the note text are kept for up to 7 days so a retried request is not charged twice, then deleted. The note text itself is not stored on the server</li>
+                <li><strong>Saved results:</strong> Results are saved on your device. With Premium, each result is also backed up in your private cloud space next to its note; deleting the output or the note deletes the cloud copy</li>
+                <li><strong>Control:</strong> You can withdraw this consent in Settings at any time</li>
+            </ul>
+
+            <h3>6. Usage and subscription information</h3>
+            <ul>
+                <li>How many transcription minutes and AI outputs you used this month, so monthly limits can be applied</li>
                 <li>For Premium: the subscription product, status and expiry date verified with Google Play, and a one-way hash of the purchase token. We never receive your card or payment details</li>
             </ul>
 
-            <h3>5. Device, diagnostic and usage data</h3>
+            <h3>7. Device, diagnostic and usage data</h3>
             <ul>
                 <li><strong>Crash reports:</strong> Firebase Crashlytics collects crash logs and basic device details (model, OS version, app version)</li>
                 <li><strong>Analytics:</strong> Firebase Analytics collects app interaction events, such as screens opened and features used, to help us improve the app</li>
@@ -96,16 +111,16 @@
                 <li>We do not intentionally send recording audio or transcript text to analytics or crash reporting</li>
             </ul>
 
-            <h3>6. Advertising ID</h3>
+            <h3>8. Advertising ID</h3>
             <p>Free accounts on Android see ads from Google AdMob, which can use your device's resettable Advertising ID. See <a href="#advertising">Advertising</a>.</p>
         </div>
 
         <div class="section">
             <h2 id="how-we-use-your-information">How We Use Your Information</h2>
             <ul>
-                <li>Save, transcribe, back up and restore your notes</li>
+                <li>Save, transcribe, back up and restore your notes, and create the AI outputs you ask for</li>
                 <li>Sign you in and keep your account secure</li>
-                <li>Apply monthly transcription limits and verify Premium subscriptions</li>
+                <li>Apply monthly transcription and AI output limits and verify Premium subscriptions</li>
                 <li>Show ads to free users</li>
                 <li>Fix crashes, prevent abuse and improve the app</li>
                 <li>Answer your support requests</li>
@@ -121,7 +136,7 @@
             <strong>Privacy:</strong> <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a></p>
 
             <h3>OpenAI</h3>
-            <p><strong>Purpose:</strong> Converting your recordings to text, only after you allow AI transcription<br>
+            <p><strong>Purpose:</strong> Converting your recordings to text and creating AI outputs from your notes, only after you allow each of them<br>
             <strong>Privacy:</strong> <a href="https://openai.com/policies/privacy-policy">openai.com/policies/privacy-policy</a></p>
 
             <h3>Google AdMob</h3>
@@ -141,7 +156,7 @@
         <div class="section">
             <h2 id="advertising">Advertising</h2>
             <ul>
-                <li><strong>Who sees ads:</strong> Free accounts on Android see a banner on the notes screens and, at most after every second saved recording, a full-screen ad. Premium accounts see no ads</li>
+                <li><strong>Who sees ads:</strong> Free accounts on Android see a banner at the bottom of the notes list. Lexy does not show full-screen ads. Premium accounts see no ads</li>
                 <li><strong>What Google may process:</strong> Your Advertising ID, device and network information, approximate location derived from your IP address, and how you interact with ads</li>
                 <li><strong>Consent:</strong> Where required (for example in the EEA, the UK and Switzerland), Lexy asks for your consent through Google's consent form before personalized ads are shown. You can change your choice in <strong>Settings &rarr; Ad privacy choices</strong></li>
                 <li><strong>Never shared:</strong> The text and audio of your notes are never shared with advertisers</li>
@@ -155,6 +170,7 @@
                 <li><strong>Notes and recordings on your device:</strong> Kept until you delete them, delete your account or uninstall the app</li>
                 <li><strong>Cloud backups:</strong> Kept until you delete the note or recording, or delete your account</li>
                 <li><strong>Transcription uploads:</strong> The copy of a recording uploaded for transcription is deleted automatically about 7 days after the request, so a failed transcription can be retried in the meantime</li>
+                <li><strong>AI output requests:</strong> The result and a one-way hash of the input are deleted from our server after up to 7 days</li>
                 <li><strong>Account, transcripts and usage records:</strong> Kept until you delete your account</li>
                 <li><strong>Purchase records:</strong> When you delete your account, we keep only a one-way hash of the purchase token, with no link to you, so a subscription cannot be moved to another account. Google Play keeps its own transaction records</li>
                 <li><strong>Crash reports:</strong> Kept by Firebase Crashlytics for up to 90 days</li>
@@ -180,7 +196,7 @@
                 <li>Access the personal data we hold about you and get a copy of it</li>
                 <li>Correct inaccurate data</li>
                 <li>Delete your account and data (see below)</li>
-                <li>Withdraw consent for AI transcription or personalized ads at any time in Settings</li>
+                <li>Withdraw consent for AI transcription, AI outputs or personalized ads at any time in Settings</li>
                 <li>Object to or restrict certain processing</li>
                 <li>Complain to your local data protection authority</li>
             </ul>
